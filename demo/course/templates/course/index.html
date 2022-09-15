@@ -2,7 +2,8 @@
 {% block body %}
 <style>
   *{
-    background-color: rgb(253, 250, 229);
+    box-sizing: border-box;
+    background-color: rgb(237, 227, 214);
   }
   table, td, th {
     border: 1px solid rgb(118, 110, 89);
@@ -17,6 +18,7 @@
   tr:nth-child(odd) {
     background-color: rgb(215, 222, 187);
   }
+  
 </style>
 
 <h1>Course List</h1>
@@ -27,6 +29,7 @@
       <th>Semester</th>
       <th>remain</th>
       <th>detail</th>
+      <th>status</th>
     </tr>
     {% for course in courses %}
     <tr>    
@@ -35,7 +38,11 @@
       <td>{{ course.semester }} / 2022</td>
       <td>{{ course.seat_quota }}</td>
       <td><a href="{% url 'course:detail' course.id %}">details</a></td>
-      
+      {% if course.status %}
+      <td>ว่าง</td>
+      {% else %}
+      <td>full</td>
+      {% endif %}
     </tr>
     {% endfor %}
 </table>

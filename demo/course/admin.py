@@ -3,7 +3,7 @@ from .models import Course, Enroll
 # Register your models here.
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['course', 'course_code', 'seat_quota', 'detail', 'semester']
+    list_display = ['course', 'course_code', 'seat_quota', 'detail', 'semester', 'status']
 
 class EnrollAdmin(admin.ModelAdmin):
     list_display = ['user', 'course']

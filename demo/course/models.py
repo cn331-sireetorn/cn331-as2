@@ -9,6 +9,7 @@ class Course(models.Model):
     seat_quota = models.IntegerField()
     detail = models.CharField(max_length=500)
     semester = models.CharField(max_length=100)
+    status = models.BooleanField()
 
     def __str__(self):
         return f"{self.course_code}"
