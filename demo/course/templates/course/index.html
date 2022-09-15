@@ -1,0 +1,42 @@
+{% extends 'course/layout.html' %}
+{% block body %}
+<style>
+  *{
+    background-color: rgb(253, 250, 229);
+  }
+  table, td, th {
+    border: 1px solid rgb(118, 110, 89);
+    border-collapse: collapse;
+  }
+  td, th {
+    padding: 10px;
+  }
+  tr:nth-child(even) {
+    background-color: rgb(13, 43, 20);
+  }
+  tr:nth-child(odd) {
+    background-color: rgb(215, 222, 187);
+  }
+</style>
+
+<h1>Course List</h1>
+<table>
+    <tr>
+      <th>Course</th>
+      <th>Code</th>
+      <th>Semester</th>
+      <th>remain</th>
+      <th>detail</th>
+    </tr>
+    {% for course in courses %}
+    <tr>    
+      <td>{{ course.course }}</td>
+      <td>{{ course.course_code }}</td>
+      <td>{{ course.semester }} / 2022</td>
+      <td>{{ course.seat_quota }}</td>
+      <td><a href="{% url 'course:detail' course.id %}">details</a></td>
+      
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

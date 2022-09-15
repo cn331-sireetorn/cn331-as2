@@ -1,0 +1,101 @@
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: rgb(200, 157, 208);
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: rgb(214, 178, 182);
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #ffe1ec;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: rgb(211, 208, 199);
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+
+  <h2>Details</h2>
+  
+</header>
+<body>
+<section>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Course list</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>{{course.course_code}}</h1>
+    <p style="font-weight: bold;">{{course.course}}</p>
+    <p>{{course.detail}}</p>
+    
+  </article>
+</section>
+
+<footer>
+  <form method="post" action="{% url 'course:enroll'%}">
+    {% csrf_token %}
+    <input type='hidden' value="{{course.id}}" name="courseID">
+    <input type="submit" value="Enrollment" >
+  </form>
+</footer>
+
+</body>
+</html>
+{% endblock %}

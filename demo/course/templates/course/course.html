@@ -1,0 +1,9 @@
+{% extends 'course/layout.html' %}
+{% block body %}
+<h1> {{course}} </h1>
+<ul>
+    <li>code: {{course_code}}</li>
+    <li>remain: {{seat_quota}}</li>
+</ul>
+<a href="{% url 'index'%}">Back to Course List</a>
+{% endblock %}
