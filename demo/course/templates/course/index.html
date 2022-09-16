@@ -39,7 +39,7 @@
       <td>{{ course.seat_quota }}</td>
       <td><a href="{% url 'course:detail' course.id %}">details</a></td>
       {% if course.status %}
-      <td>ว่าง</td>
+      <td>empty</td>
       {% else %}
       <td>full</td>
       {% endif %}

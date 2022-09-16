@@ -75,7 +75,7 @@ footer {
   <nav>
     <ul>
       <li><a href="{% url 'course:index'%}">Course list</a></li>
-      <li><a href="{% url 'index'%}">Enrollment Result</a></li>
+      <li><a href="{% url 'course:enrollresult'%}">Enrollment Result</a></li>
       <li><a href="{% url 'login'%}">Logout</a></li>
     </ul>
   </nav>
@@ -89,13 +89,31 @@ footer {
 </section>
 
 <footer>
-  <form method="post" action="{% url 'course:enroll'%}">
+  {% if enrolled %}
+  <form method="post" action="{% url 'course:withdraw' course.id %}">
     {% csrf_token %}
     <input type='hidden' value="{{course.id}}" name="courseID">
-    <input type="submit" value="Enrollment" >
+    <input type="submit" value="Withdraw">
   </form>
+  {% else %}
+  {% if course.status%}
+  <form method="post" action="{% url 'course:enroll' course.id %}">
+    {% csrf_token %}
+    <input type='hidden' value="{{course.id}}" name="courseID">
+    <button id="submit" type="submit">Enrollment</button>
+  </form>
+  {% else %}
+  <form method="post" action="{% url 'course:enroll' course.id %}">
+    {% csrf_token %}
+    <input type='hidden' value="{{course.id}}" name="courseID">
+    <button id="submit" type="submit" disabled>Enrollment</button>
+  </form>
+  {% endif %}
+  {% endif %}
 </footer>
 
 </body>
 </html>
+
+
 {% endblock %}
