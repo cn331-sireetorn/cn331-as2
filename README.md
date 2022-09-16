@@ -38,17 +38,17 @@ Admin:
 
 Users: 
 
-จะแสดง username ,email address,firstname,lastname และ staff status ของผู้ใช้งานระบบ
+    จะแสดง username ,email address,firstname,lastname และ staff status ของผู้ใช้งานระบบ
           admin สามารถเพิ่ม account admin โดยการกด add user แล้วทำการกรอกข้อมูลของadmin
 
 courses: 
 
-จะแสดง course(รายชื่อวิชา) ,course code(รหัสวิชา), seat quota(จำนวนโควตา) ,detail(รายละเอียด), semester(ภาคการศึกษา) และ 
+    จะแสดง course(รายชื่อวิชา) ,course code(รหัสวิชา), seat quota(จำนวนโควตา) ,detail(รายละเอียด), semester(ภาคการศึกษา) และ 
           status(สถานะ) 
           
           admin สามารถแก้ไข course(ชื่อวิชา) ,course code(รหัสวิชา), seat quota(จำนวนโควตา) ,detail(รายละเอียด), semester(เทอม/ปีการศึกษา) ทั้งการเพิ่ม ลด หรือปรับแก้รายละเอียดต่างๆในแต่ละหัวข้อได้ ในส่วน status(สถานะ) admin จะปรับเปลี่ยนตาม seat quota ของวิชานั้นๆ หากจำนวนโควตาเต็ม จะเปลี่ยน status จาก empty เป็น full 
 
 Enrolls: 
 
-จะแสดงชื่อของ student ตามด้วยรหัสวิชาที่ student ทำการกด enroll   
+    จะแสดงชื่อของ student ตามด้วยรหัสวิชาที่ student ทำการกด enroll   
           
