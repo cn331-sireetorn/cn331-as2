@@ -1,28 +1,53 @@
 {% block body %}
 <style>
+    * {
+        background-color: rgb(206, 200, 191);
+    }
+    h1 {
+        background-color:#ebe7de;
+        
+        padding:15px;
+        text-align:center;
+    }
     .menu {
             float: left;
             width: 20%;
+            height: 500px;
             text-align: center;
         }
-
-        .menu a {
-            background-color: #8fb2cc;
-            padding: 8px;
-            margin-top: 7px;
-            display: block;
-            width: 100%;
-            color: black;
-        }
-
-        .main {
-            float: left;
-            width: 60%;
-            padding: 0 20px;
-        }
+    .menu a {
+        background-color: #797265;
+        padding: 8px;
+        margin-top: 7px;
+        display: block;
+        width: 150px;
+        color: rgb(209, 202, 202);
+    }
+    .main {
+        margin-left: 250px;
+        height: 500px;
+    } 
+    a {
+        width: 100px;
+        background: #fff;
+        border:none;
+        outline: none;
+        border-radius: 5px;
+        transition: .5s;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+    }
+    a:hover, a:focus {
+        background: #fff;
+        width: 200px;
+        color: #5b5953;
+    }
+    
 </style>
 
-<div style="background-color:#c6dff2;padding:15px;text-align:center;">
+<div>
     <h1>Enrollment Result</h1>
 </div>
   
@@ -32,6 +57,7 @@
       <a href="#">Enrollment Result</a>
       <a href="{% url 'course:index' %}">Course List</a>
       <a href="{% url 'logout' %}">Logout</a>
+
     </div>
   
     <div class="main">

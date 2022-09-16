@@ -1,119 +1,119 @@
 {% block body %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>CSS Template</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {
-  box-sizing: border-box;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-}
-
-/* Style the header */
-header {
-  background-color: rgb(200, 157, 208);
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-}
-
-/* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 30%;
-  height: 300px; /* only for demonstration, should be removed */
-  background: rgb(214, 178, 182);
-  padding: 20px;
-}
-
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-article {
-  float: left;
-  padding: 20px;
-  width: 70%;
-  background-color: #ffe1ec;
-  height: 300px; /* only for demonstration, should be removed */
-}
-
-/* Clear floats after the columns */
-section::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Style the footer */
-footer {
-  background-color: rgb(211, 208, 199);
-  padding: 10px;
-  text-align: center;
-  color: white;
-}
-
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
+  * {
+    background-color: rgb(206, 200, 191);
   }
-}
+  h1 {
+    background-color:#ebe7de;
+    padding:15px;
+    text-align:center;
+  }
+  .menu {
+    float: left;
+    width: 20%;
+    text-align: center;
+      }
+  .menu a {
+    background-color: #797265;
+    padding: 8px;
+    margin-top: 7px;
+    display: block;
+    width: 150px;
+    color: rgb(209, 202, 202);
+  }
+  .main {
+    margin-left: 250px;
+    height: 500px;
+  } 
+  a {
+    width: 100px;
+    background: #fff;
+    border:none;
+    outline: none;
+    border-radius: 5px;
+    transition: .5s;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    background: #fff;
+    width: 200px;
+    color: #5b5953;
+  }
+  @media (max-width: 600px) {
+    nav, article {
+      width: 100%;
+      height: auto;
+    }
+  }
+  input {
+    width: 100px;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    border:none;
+    outline: none;
+    border-radius: 5px;
+    transition: .5s;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+  }
+  input:hover, input:focus {
+    background: rgb(169, 83, 83);
+    width: 200px;
+    color: #f8f8f6;
+  }
 </style>
 
-  <h2>Details</h2>
+<div>
+    <h1>Details</h1>
+</div>
   
-</header>
-<body>
-<section>
-  <nav>
-    <ul>
-      <li><a href="{% url 'course:index'%}">Course list</a></li>
-      <li><a href="{% url 'course:enrollresult'%}">Enrollment Result</a></li>
-      <li><a href="{% url 'login'%}">Logout</a></li>
-    </ul>
-  </nav>
-  
-  <article>
-    <h1>{{course.course_code}}</h1>
-    <p style="font-weight: bold;">{{course.course}}</p>
-    <p>{{course.detail}}</p>
-    
-  </article>
-</section>
+<div style="overflow:auto">
+    <div class="menu">
+      <a href="{% url 'index'%}">Home</a>
+      <a href="{% url 'course:enrollresult'%}">Enrollment Result</a>
+      <a href="{% url 'course:index' %}">Course List</a>
+      <a href="{% url 'logout' %}">Logout</a>
+    </div>
 
-<footer>
-  {% if enrolled %}
-  <form method="post" action="{% url 'course:withdraw' course.id %}">
-    {% csrf_token %}
-    <input type='hidden' value="{{course.id}}" name="courseID">
-    <input type="submit" value="Withdraw">
-  </form>
-  {% else %}
-  {% if course.status%}
-  <form method="post" action="{% url 'course:enroll' course.id %}">
-    {% csrf_token %}
-    <input type='hidden' value="{{course.id}}" name="courseID">
-    <button id="submit" type="submit">Enrollment</button>
-  </form>
-  {% else %}
-  <form method="post" action="{% url 'course:enroll' course.id %}">
-    {% csrf_token %}
-    <input type='hidden' value="{{course.id}}" name="courseID">
-    <button id="submit" type="submit" disabled>Enrollment</button>
-  </form>
-  {% endif %}
-  {% endif %}
+    <div class="main">
+      <h2>{{course.course_code}}</h2>
+      <p style="font-weight: bold;">{{course.course}}</p>
+      <p>{{course.detail}}</p>
+    </div>
+</div>
+<center>
+  <div class="btn">
+    {% if enrolled %}
+    <form method="post" action="{% url 'course:withdraw' course.id %}">
+      {% csrf_token %}
+      <input type='hidden' value="{{course.id}}" name="courseID">
+      <input type="submit" value="Withdraw">
+    </form>
+    {% else %}
+    {% if course.status%}
+    <form method="post" action="{% url 'course:enroll' course.id %}">
+      {% csrf_token %}
+      <input type='hidden' value="{{course.id}}" name="courseID">
+      <input type="submit" value="Enrollment">
+    </form>
+    {% else %}
+    <form method="post" action="{% url 'course:enroll' course.id %}">
+      {% csrf_token %}
+      <input type='hidden' value="{{course.id}}" name="courseID">
+      <input type="submit" disabled value='Enrollment'>
+    </form>
+    {% endif %}
+    {% endif %}
+  </div>
+</center>
+
+<footer style="height: 100px;">
+  <div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© chom faii &#9829;</div>
 </footer>
-
-</body>
-</html>
-
 
 {% endblock %}

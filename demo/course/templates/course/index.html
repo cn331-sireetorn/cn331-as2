@@ -3,26 +3,63 @@
 <style>
   *{
     box-sizing: border-box;
-    background-color: rgb(237, 227, 214);
+    background-color: rgb(222, 213, 200);
+  }
+  table {
+    text-align: center;
   }
   table, td, th {
     border: 1px solid rgb(118, 110, 89);
     border-collapse: collapse;
+    padding: 8px;
+    color: rgb(108, 102, 92);
   }
-  td, th {
-    padding: 10px;
+
+  th:nth-child(even), td:nth-child(odd) {
+      background-color: rgb(215, 208, 188);
   }
-  tr:nth-child(even) {
-    background-color: rgb(13, 43, 20);
+  td:nth-child(even), th:nth-child(odd) {
+      background-color: rgb(201, 195, 177);
   }
-  tr:nth-child(odd) {
-    background-color: rgb(215, 222, 187);
+  td > a:link, a:visited {
+    text-decoration: none;
+    display: inline-block;
+    color: aliceblue;
+    background: none;
   }
-  
+  td > a:active {
+    color: rgb(105, 102, 82);
+  }
+  .tab {
+    list-style-type: none;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .tab > a:link, a:visited {
+    background-color: rgb(114, 114, 103);
+    border-radius: 10px;
+    transition: ease-out 0.3s;
+    color: rgb(255, 255, 255);
+    padding: 15px 20px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .tab > a:hover {
+    background-color: rgb(166, 150, 129);
+  }
 </style>
 
-<h1>Course List</h1>
-<table>
+<div class="tab">
+  <a href="{% url 'index'%}">Home</a> |
+  <a href="#">Course List</a> |
+  <a href="{% url 'course:enrollresult'%}">Enrollment Result</a> |
+  <a href="{% url 'login'%}">Log out</a>
+</div>
+
+<h1 style="text-align:center; color: rgb(106, 101, 91);">Course List</h1>
+<center>
+  <table>
     <tr>
       <th>Course</th>
       <th>Code</th>
@@ -45,5 +82,7 @@
       {% endif %}
     </tr>
     {% endfor %}
-</table>
+  </table>
+</center>
+
 {% endblock %}
