@@ -2,21 +2,108 @@
 {% block body %}
 <style>
     *{
-        
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Calibri, 'Trebuchet MS', sans-serif;
     }
+    .textbox {
+        margin: 2rem; 
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .text1{
+        border: none;
+        height: 50px;
+        width: 250px;
+        margin: 10px 0;
+        padding: 0 10px;
+        font-size: 1rem;
+        outline: none;
+        text-align: center;
+        border-radius: 5px;
+        transition: .5x;
+        cursor: pointer;
+        background-color: rgb(221, 208, 170);
+    }
+    .text1:hover,
+    .text1:focus{
+        background: rgb(176, 148, 122);
+        width: 260px;
+        color: bisque;
+    }
+    .login{
+        border: none;
+        height: 30px;
+        width: 140px;
+        margin: 10px 0;
+        padding: 0 10px;
+        font-size: 1rem;
+        outline: none;
+        text-align: center;
+        border-radius: 5px;
+        transition: .5x;
+        cursor: pointer;
+        background-color: rgb(189, 187, 179);
+    }
+    .login:hover,
+    .login:focus{
+        background: rgb(134, 113, 113);
+        width: 150px;
+        color: bisque;
+    
+    }
+    
+    button{
+        border: none;
+        height: 30px;
+        width: 140px;
+        margin: 10px 0;
+        padding: 0 10px;
+        font-size: 1rem;
+        outline: none;
+        text-align: center;
+        border-radius: 5px;
+        transition: .5x;
+        cursor: pointer;
+        background-color: rgb(189, 187, 179);
+    }
+
+    button:hover,
+    button:focus{
+        background: rgb(134, 113, 113);
+        width: 150px;
+        color: bisque;
+    }
+
+    h1{
+        color: rgb(109, 89, 75);
+    }
+
 </style>
-<center>
-<div style="margin: 250px">
-<h1>LOGIN</h1>
+<body>
+    <center><div class="center">
+    <div style="margin-top: 10rem;
+    background-color: white;
+    text-align: center;
+    align-self:center;
+    width: fit-content;
+    padding: 2rem;
+    border-radius: 55px;"
+    >
+    <img src="https://th.bing.com/th/id/OIP.ELnJq_JhiyfewhCMKOkNfwHaHa?pid=ImgDet&rs=1"  width="100" height="100">
+    <h1>LOGIN</h1>
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
-        <label for="username">Username: </label><br/>
-        <input type="text" id="username" name="username" placeholder="username"><br/>
-        <label for="password">Password: </label><br/>
-        <input type="password" id="password" name="password" placeholder="password"><br/>
-        <br>
-        <input type="submit" value="Login">
+        <div class="textbox" >
+            <label for="username">USERNAME: </label><br/>
+            <input class="text1" type="text" id="username" name="username" placeholder="username"><br/>
+            <label for="password">PASSWORD: </label><br/>
+            <input class="text1" type="password" id="password" name="password" placeholder="password"><br/>
+            <br>
+            <input class="login" type="submit" value="Login">
+            <button><a href="/admin/" style="text-decoration: none;">
+                admin
+            </a></button>
+        </div>
     </form>
-</div>
-</center>
+    </div>
+</div></center>
+</body>
 {% endblock %}
