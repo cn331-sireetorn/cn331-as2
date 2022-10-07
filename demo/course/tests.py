@@ -36,6 +36,19 @@ class TestViews(TestCase):
     def setUp(self):
         self.client = Client()
 
+        self.username = 'username'
+        self.password = 'password'
+        self.email = 'user@gmail.com'
+        self.fname = 'first'
+        self.lname = 'last'
+        self.credentials = {
+            'username': self.username,
+            'password': self.password,
+            'email': self.email,
+            'first_name': self.fname,
+            'last_name': self.lname}
+        self.user = User.objects.create_user(**self.credentials)
+
         self.course = Course.objects.create(
             course='com',
             course_code='3',
@@ -50,19 +63,6 @@ class TestViews(TestCase):
         self.enroll_url = reverse('course:enroll', args=[self.course.id])
         self.enrollresult_url = reverse('course:enrollresult')
         self.withdraw_url = reverse('course:withdraw', args=[self.course.id])
-
-        self.username = 'username'
-        self.password = 'password'
-        self.email = 'user@gmail.com'
-        self.fname = 'first'
-        self.lname = 'last'
-        self.credentials = {
-            'username': self.username,
-            'password': self.password,
-            'email': self.email,
-            'first_name': self.fname,
-            'last_name': self.lname}
-        self.user = User.objects.create_user(**self.credentials)
 
     def test_index_GET(self):
         response = self.client.get(self.index_url)
@@ -127,7 +127,7 @@ class TestViews(TestCase):
         self.client.login(username=self.username, password=self.password)
 
         response = self.client.get(self.withdraw_url)
-        
+
         self.assertEquals(response.status_code, 400)
         self.assertTemplateUsed(response, 'course/index.html')
 
